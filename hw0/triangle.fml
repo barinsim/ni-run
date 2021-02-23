@@ -1,0 +1,34 @@
+function triangle(height) ->
+begin
+    if height < 0 then begin
+        print("Height cannot be negative!\n");
+    end
+    else begin
+        let h = height;
+        while h > 0 do begin
+            // Prints spaces
+            let spaces = h - 1;
+            while spaces > 0 do begin
+                print(" ");
+                spaces <- spaces - 1;
+            end;
+
+            // Prints asterisks
+            let stars = 1 + (height - h) * 2;
+            while stars > 0 do begin
+                print("*");
+                stars <- stars - 1;
+            end;
+
+            print("\n");
+            h <- h - 1
+        end
+    end
+end;
+
+// Tests
+triangle(3);
+triangle(0);
+triangle(1);
+triangle(-3);
+triangle(5);

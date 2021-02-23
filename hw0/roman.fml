@@ -1,0 +1,84 @@
+function int(value) ->
+object extends value
+begin
+    function print_decimal() -> print("~\n", this - 0);
+
+    function print_roman() ->
+    begin
+        if this == 0 then print("null")
+        else this.print_roman_impl();
+
+        print("\n");
+    end;
+
+    function print_roman_impl() ->
+    begin
+        if this < 0 then begin
+            print("-"); int(this * (-1)).print_roman_impl();
+        end
+        else if this >= 1000 then begin
+            print("M"); int(this - 1000).print_roman_impl();
+        end
+        else if this >= 900 then begin
+            print("CM"); int(this - 900).print_roman_impl();
+        end
+        else if this >= 500 then begin
+            print("D"); int(this - 500).print_roman_impl();
+        end
+        else if this >= 400 then begin
+            print("CD"); int(this - 400).print_roman_impl();
+        end
+        else if this >= 100 then begin
+            print("C"); int(this - 100).print_roman_impl();
+        end
+        else if this >= 90 then begin
+            print("XC"); int(this - 90).print_roman_impl();
+        end
+        else if this >= 50 then begin
+            print("L"); int(this - 50).print_roman_impl();
+        end
+        else if this >= 40 then begin
+            print("XL"); int(this - 40).print_roman_impl();
+        end
+        else if this >= 10 then begin
+            print("X"); int(this - 10).print_roman_impl();
+        end
+        else if this >= 9 then begin
+            print("IX"); int(this - 9).print_roman_impl();
+        end
+        else if this >= 5 then begin
+            print("V"); int(this - 5).print_roman_impl();
+        end
+        else if this >= 4 then begin
+            print("IV"); int(this - 4).print_roman_impl();
+        end
+        else if this >= 1 then begin
+            print("I"); int(this - 1).print_roman_impl();
+        end;
+    end;
+
+end;
+
+
+// Tests
+int(0).print_roman();
+int(-10).print_roman();
+int(1).print_roman();
+int(4).print_roman();
+int(5).print_roman();
+int(9).print_roman();
+int(10).print_roman();
+int(40).print_roman();
+int(50).print_roman();
+int(90).print_roman();
+int(100).print_roman();
+int(400).print_roman();
+int(500).print_roman();
+int(900).print_roman();
+int(1000).print_roman();
+int(6).print_roman();
+int(42).print_roman();
+int(666).print_roman();
+int(14000).print_roman();
+
+int(400).print_decimal();

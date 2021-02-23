@@ -1,0 +1,116 @@
+function stack() ->
+object
+begin
+    let data = null;
+    let size = 0;
+    let capacity = 0;
+
+    // Removes last added element and returns it. Null if empty.
+    function pop() ->
+    begin
+        if this.size <= 0 then begin
+            print("Cannot pop empty stack!");
+            null
+        end else begin
+            this.size <- this.size - 1;
+            this.data[this.size];
+        end;
+    end;
+
+    // Adds elem to the first position and resizes if needed.
+    function push(elem) ->
+    begin
+        if this.size == this.capacity then begin
+            let newCapacity = null;
+            if this.capacity == 0 then newCapacity <- 1
+            else newCapacity <- this.capacity * 2;
+
+            this.resize(newCapacity);
+        end;
+
+        this.data[this.size] <- elem;
+        this.size <- this.size + 1;
+    end;
+
+    // Returns null if empty, otherwise last added element.
+    function peek() -> if this.size > 0 then this.data[this.size - 1];
+
+    // Resizes to newCapacity. If newCapacity is equal or less than capacity, does nothing.
+    function resize(newCapacity) ->
+    begin
+        if newCapacity > this.capacity then begin
+            let newData = array(newCapacity, null);
+            let i = 0;
+            while i < this.size do begin
+                newData[i] <- this.data[i];
+                i <- i + 1;
+            end;
+
+            this.capacity <- newCapacity;
+            this.data <- newData;
+        end;
+    end;
+
+    // Prints the stack. [last-added ... ... ...]
+    function print() ->
+    begin
+        let i = this.size;
+        print("[");
+        while i > 0 do begin
+            print(" ~ ", this.data[i - 1]);
+            i <- i - 1;
+        end;
+        print("]\n");
+    end;
+end;
+
+// Tests
+/*let st = stack();
+
+st.push(1);
+st.print();
+print("~\n", st.peek());
+
+st.push(3);
+st.print();
+print("~\n", st.peek());
+
+st.push(5);
+st.print();
+print("~\n", st.peek());
+
+st.push(7);
+st.print();
+print("~\n", st.peek());
+
+print("popped: ~ ", st.pop());
+st.print();
+print("~\n", st.peek());
+
+st.pop();
+st.print();
+print("~\n", st.peek());
+
+st.pop();
+st.print();
+print("~\n", st.peek());
+
+st.pop();
+st.print();
+print("~\n", st.peek());
+
+st.pop();
+st.print();
+print("~\n", st.peek());
+
+st.pop();
+st.print();
+print("~\n", st.peek());
+
+st.push(4);
+st.print();
+print("~\n", st.peek());
+
+st.pop();
+st.print();
+print("~\n", st.peek());*/

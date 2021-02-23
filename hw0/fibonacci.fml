@@ -1,0 +1,17 @@
+function fibonacci(index) ->
+begin
+    if index < 0 then print("Index cannot be negative!")
+    else if index == 0 then 0
+    else if index == 1 then 1
+    else fibonacci(index - 1) + fibonacci(index - 2)
+end;
+
+// Tests
+print("~\n", fibonacci(0));
+print("~\n", fibonacci(1));
+print("~\n", fibonacci(2));
+print("~\n", fibonacci(3));
+print("~\n", fibonacci(4));
+print("~\n", fibonacci(5));
+print("~\n", fibonacci(6));
+print("~\n", fibonacci(7));
